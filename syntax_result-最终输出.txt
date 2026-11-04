@@ -1,0 +1,375 @@
+===== 输入 token 流 =====
+第1个 token：<KEYWORD, void>
+第2个 token：<IDENTIFIER, main>
+第3个 token：<DELIMITER, (>
+第4个 token：<DELIMITER, )>
+第5个 token：<DELIMITER, {>
+第6个 token：<KEYWORD, int>
+第7个 token：<IDENTIFIER, num1>
+第8个 token：<DELIMITER, ,>
+第9个 token：<IDENTIFIER, num2>
+第10个 token：<DELIMITER, ,>
+第11个 token：<IDENTIFIER, num3>
+第12个 token：<DELIMITER, ;>
+第13个 token：<KEYWORD, int>
+第14个 token：<IDENTIFIER, max>
+第15个 token：<DELIMITER, ;>
+第16个 token：<IDENTIFIER, num1>
+第17个 token：<OPERATOR, =>
+第18个 token：<CONSTANT, 5>
+第19个 token：<DELIMITER, ;>
+第20个 token：<IDENTIFIER, num2>
+第21个 token：<OPERATOR, =>
+第22个 token：<CONSTANT, 6>
+第23个 token：<DELIMITER, ;>
+第24个 token：<IDENTIFIER, num3>
+第25个 token：<OPERATOR, =>
+第26个 token：<CONSTANT, 4>
+第27个 token：<DELIMITER, ;>
+第28个 token：<KEYWORD, if>
+第29个 token：<DELIMITER, (>
+第30个 token：<IDENTIFIER, num1>
+第31个 token：<OPERATOR, <>
+第32个 token：<IDENTIFIER, num2>
+第33个 token：<DELIMITER, )>
+第34个 token：<DELIMITER, {>
+第35个 token：<IDENTIFIER, max>
+第36个 token：<OPERATOR, =>
+第37个 token：<IDENTIFIER, num2>
+第38个 token：<DELIMITER, ;>
+第39个 token：<DELIMITER, }>
+第40个 token：<KEYWORD, else>
+第41个 token：<KEYWORD, if>
+第42个 token：<DELIMITER, (>
+第43个 token：<IDENTIFIER, num1>
+第44个 token：<OPERATOR, <>
+第45个 token：<IDENTIFIER, num3>
+第46个 token：<DELIMITER, )>
+第47个 token：<DELIMITER, {>
+第48个 token：<IDENTIFIER, max>
+第49个 token：<OPERATOR, =>
+第50个 token：<IDENTIFIER, num3>
+第51个 token：<DELIMITER, ;>
+第52个 token：<DELIMITER, }>
+第53个 token：<KEYWORD, else>
+第54个 token：<DELIMITER, {>
+第55个 token：<IDENTIFIER, max>
+第56个 token：<OPERATOR, =>
+第57个 token：<IDENTIFIER, num1>
+第58个 token：<DELIMITER, ;>
+第59个 token：<DELIMITER, }>
+第60个 token：<KEYWORD, if>
+第61个 token：<DELIMITER, (>
+第62个 token：<IDENTIFIER, num2>
+第63个 token：<OPERATOR, <>
+第64个 token：<IDENTIFIER, num3>
+第65个 token：<DELIMITER, )>
+第66个 token：<DELIMITER, {>
+第67个 token：<IDENTIFIER, max>
+第68个 token：<OPERATOR, =>
+第69个 token：<IDENTIFIER, num3>
+第70个 token：<DELIMITER, ;>
+第71个 token：<DELIMITER, }>
+第72个 token：<KEYWORD, else>
+第73个 token：<DELIMITER, {>
+第74个 token：<IDENTIFIER, max>
+第75个 token：<OPERATOR, =>
+第76个 token：<IDENTIFIER, num2>
+第77个 token：<DELIMITER, ;>
+第78个 token：<DELIMITER, }>
+第79个 token：<IDENTIFIER, printf>
+第80个 token：<DELIMITER, (>
+第81个 token：<STRING, "\\杈冨ぇ鐨勬暟鏄細\*%d*\n">
+第82个 token：<DELIMITER, ,>
+第83个 token：<IDENTIFIER, max>
+第84个 token：<DELIMITER, )>
+第85个 token：<DELIMITER, ;>
+第86个 token：<KEYWORD, return>
+第87个 token：<CONSTANT, 0>
+第88个 token：<DELIMITER, ;>
+第89个 token：<DELIMITER, }>
+第90个 token：<EOF, EOF>
+
+===== 分析过程（LL(1) 表驱动）=====
+[1] 展开 Program → TypeSpec IDENTIFIER:* AfterTypeId
+[2] 展开 TypeSpec → KEYWORD:void
+[3] 匹配 KEYWORD:void
+[4] 匹配 IDENTIFIER:*
+[5] 展开 AfterTypeId → DELIMITER:( ParenRest
+[6] 匹配 DELIMITER:(
+[7] 展开 ParenRest → DELIMITER:) Block
+[8] 匹配 DELIMITER:)
+[9] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[10] 匹配 DELIMITER:{
+[11] 展开 StmtList → Stmt StmtList
+[12] 展开 Stmt → DeclStmt
+[13] 展开 DeclStmt → TypeSpec IDENTIFIER:* DeclRest
+[14] 展开 TypeSpec → KEYWORD:int
+[15] 匹配 KEYWORD:int
+[16] 匹配 IDENTIFIER:*
+[17] 展开 DeclRest → DELIMITER:, IDENTIFIER:* DeclRest
+[18] 匹配 DELIMITER:,
+[19] 匹配 IDENTIFIER:*
+[20] 展开 DeclRest → DELIMITER:, IDENTIFIER:* DeclRest
+[21] 匹配 DELIMITER:,
+[22] 匹配 IDENTIFIER:*
+[23] 展开 DeclRest → DELIMITER:;
+[24] 匹配 DELIMITER:;
+[25] 展开 StmtList → Stmt StmtList
+[26] 展开 Stmt → DeclStmt
+[27] 展开 DeclStmt → TypeSpec IDENTIFIER:* DeclRest
+[28] 展开 TypeSpec → KEYWORD:int
+[29] 匹配 KEYWORD:int
+[30] 匹配 IDENTIFIER:*
+[31] 展开 DeclRest → DELIMITER:;
+[32] 匹配 DELIMITER:;
+[33] 展开 StmtList → Stmt StmtList
+[34] 展开 Stmt → IDENTIFIER:* IdStmt
+[35] 匹配 IDENTIFIER:*
+[36] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[37] 匹配 OPERATOR:=
+[38] 展开 Expr → Term ExprTail
+[39] 展开 Term → Factor TermTail
+[40] 展开 Factor → CONSTANT:*
+[41] 匹配 CONSTANT:*
+[42] 展开 TermTail → ε
+[43] 展开 ExprTail → ε
+[44] 匹配 DELIMITER:;
+[45] 展开 StmtList → Stmt StmtList
+[46] 展开 Stmt → IDENTIFIER:* IdStmt
+[47] 匹配 IDENTIFIER:*
+[48] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[49] 匹配 OPERATOR:=
+[50] 展开 Expr → Term ExprTail
+[51] 展开 Term → Factor TermTail
+[52] 展开 Factor → CONSTANT:*
+[53] 匹配 CONSTANT:*
+[54] 展开 TermTail → ε
+[55] 展开 ExprTail → ε
+[56] 匹配 DELIMITER:;
+[57] 展开 StmtList → Stmt StmtList
+[58] 展开 Stmt → IDENTIFIER:* IdStmt
+[59] 匹配 IDENTIFIER:*
+[60] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[61] 匹配 OPERATOR:=
+[62] 展开 Expr → Term ExprTail
+[63] 展开 Term → Factor TermTail
+[64] 展开 Factor → CONSTANT:*
+[65] 匹配 CONSTANT:*
+[66] 展开 TermTail → ε
+[67] 展开 ExprTail → ε
+[68] 匹配 DELIMITER:;
+[69] 展开 StmtList → Stmt StmtList
+[70] 展开 Stmt → IfStmt
+[71] 展开 IfStmt → KEYWORD:if DELIMITER:( Cond DELIMITER:) Stmt ElsePart
+[72] 匹配 KEYWORD:if
+[73] 匹配 DELIMITER:(
+[74] 展开 Cond → Expr OptRel LogicLoop
+[75] 展开 Expr → Term ExprTail
+[76] 展开 Term → Factor TermTail
+[77] 展开 Factor → IDENTIFIER:* FactorRest
+[78] 匹配 IDENTIFIER:*
+[79] 展开 FactorRest → ε
+[80] 展开 TermTail → ε
+[81] 展开 ExprTail → ε
+[82] 展开 OptRel → RelOp Expr
+[83] 展开 RelOp → OPERATOR:<
+[84] 匹配 OPERATOR:<
+[85] 展开 Expr → Term ExprTail
+[86] 展开 Term → Factor TermTail
+[87] 展开 Factor → IDENTIFIER:* FactorRest
+[88] 匹配 IDENTIFIER:*
+[89] 展开 FactorRest → ε
+[90] 展开 TermTail → ε
+[91] 展开 ExprTail → ε
+[92] 展开 LogicLoop → ε
+[93] 匹配 DELIMITER:)
+[94] 展开 Stmt → Block
+[95] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[96] 匹配 DELIMITER:{
+[97] 展开 StmtList → Stmt StmtList
+[98] 展开 Stmt → IDENTIFIER:* IdStmt
+[99] 匹配 IDENTIFIER:*
+[100] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[101] 匹配 OPERATOR:=
+[102] 展开 Expr → Term ExprTail
+[103] 展开 Term → Factor TermTail
+[104] 展开 Factor → IDENTIFIER:* FactorRest
+[105] 匹配 IDENTIFIER:*
+[106] 展开 FactorRest → ε
+[107] 展开 TermTail → ε
+[108] 展开 ExprTail → ε
+[109] 匹配 DELIMITER:;
+[110] 展开 StmtList → ε
+[111] 匹配 DELIMITER:}
+[112] 展开 ElsePart → KEYWORD:else Stmt
+[113] 匹配 KEYWORD:else
+[114] 展开 Stmt → IfStmt
+[115] 展开 IfStmt → KEYWORD:if DELIMITER:( Cond DELIMITER:) Stmt ElsePart
+[116] 匹配 KEYWORD:if
+[117] 匹配 DELIMITER:(
+[118] 展开 Cond → Expr OptRel LogicLoop
+[119] 展开 Expr → Term ExprTail
+[120] 展开 Term → Factor TermTail
+[121] 展开 Factor → IDENTIFIER:* FactorRest
+[122] 匹配 IDENTIFIER:*
+[123] 展开 FactorRest → ε
+[124] 展开 TermTail → ε
+[125] 展开 ExprTail → ε
+[126] 展开 OptRel → RelOp Expr
+[127] 展开 RelOp → OPERATOR:<
+[128] 匹配 OPERATOR:<
+[129] 展开 Expr → Term ExprTail
+[130] 展开 Term → Factor TermTail
+[131] 展开 Factor → IDENTIFIER:* FactorRest
+[132] 匹配 IDENTIFIER:*
+[133] 展开 FactorRest → ε
+[134] 展开 TermTail → ε
+[135] 展开 ExprTail → ε
+[136] 展开 LogicLoop → ε
+[137] 匹配 DELIMITER:)
+[138] 展开 Stmt → Block
+[139] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[140] 匹配 DELIMITER:{
+[141] 展开 StmtList → Stmt StmtList
+[142] 展开 Stmt → IDENTIFIER:* IdStmt
+[143] 匹配 IDENTIFIER:*
+[144] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[145] 匹配 OPERATOR:=
+[146] 展开 Expr → Term ExprTail
+[147] 展开 Term → Factor TermTail
+[148] 展开 Factor → IDENTIFIER:* FactorRest
+[149] 匹配 IDENTIFIER:*
+[150] 展开 FactorRest → ε
+[151] 展开 TermTail → ε
+[152] 展开 ExprTail → ε
+[153] 匹配 DELIMITER:;
+[154] 展开 StmtList → ε
+[155] 匹配 DELIMITER:}
+[156] 展开 ElsePart → KEYWORD:else Stmt
+[157] 匹配 KEYWORD:else
+[158] 展开 Stmt → Block
+[159] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[160] 匹配 DELIMITER:{
+[161] 展开 StmtList → Stmt StmtList
+[162] 展开 Stmt → IDENTIFIER:* IdStmt
+[163] 匹配 IDENTIFIER:*
+[164] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[165] 匹配 OPERATOR:=
+[166] 展开 Expr → Term ExprTail
+[167] 展开 Term → Factor TermTail
+[168] 展开 Factor → IDENTIFIER:* FactorRest
+[169] 匹配 IDENTIFIER:*
+[170] 展开 FactorRest → ε
+[171] 展开 TermTail → ε
+[172] 展开 ExprTail → ε
+[173] 匹配 DELIMITER:;
+[174] 展开 StmtList → ε
+[175] 匹配 DELIMITER:}
+[176] 展开 StmtList → Stmt StmtList
+[177] 展开 Stmt → IfStmt
+[178] 展开 IfStmt → KEYWORD:if DELIMITER:( Cond DELIMITER:) Stmt ElsePart
+[179] 匹配 KEYWORD:if
+[180] 匹配 DELIMITER:(
+[181] 展开 Cond → Expr OptRel LogicLoop
+[182] 展开 Expr → Term ExprTail
+[183] 展开 Term → Factor TermTail
+[184] 展开 Factor → IDENTIFIER:* FactorRest
+[185] 匹配 IDENTIFIER:*
+[186] 展开 FactorRest → ε
+[187] 展开 TermTail → ε
+[188] 展开 ExprTail → ε
+[189] 展开 OptRel → RelOp Expr
+[190] 展开 RelOp → OPERATOR:<
+[191] 匹配 OPERATOR:<
+[192] 展开 Expr → Term ExprTail
+[193] 展开 Term → Factor TermTail
+[194] 展开 Factor → IDENTIFIER:* FactorRest
+[195] 匹配 IDENTIFIER:*
+[196] 展开 FactorRest → ε
+[197] 展开 TermTail → ε
+[198] 展开 ExprTail → ε
+[199] 展开 LogicLoop → ε
+[200] 匹配 DELIMITER:)
+[201] 展开 Stmt → Block
+[202] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[203] 匹配 DELIMITER:{
+[204] 展开 StmtList → Stmt StmtList
+[205] 展开 Stmt → IDENTIFIER:* IdStmt
+[206] 匹配 IDENTIFIER:*
+[207] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[208] 匹配 OPERATOR:=
+[209] 展开 Expr → Term ExprTail
+[210] 展开 Term → Factor TermTail
+[211] 展开 Factor → IDENTIFIER:* FactorRest
+[212] 匹配 IDENTIFIER:*
+[213] 展开 FactorRest → ε
+[214] 展开 TermTail → ε
+[215] 展开 ExprTail → ε
+[216] 匹配 DELIMITER:;
+[217] 展开 StmtList → ε
+[218] 匹配 DELIMITER:}
+[219] 展开 ElsePart → KEYWORD:else Stmt
+[220] 匹配 KEYWORD:else
+[221] 展开 Stmt → Block
+[222] 展开 Block → DELIMITER:{ StmtList DELIMITER:}
+[223] 匹配 DELIMITER:{
+[224] 展开 StmtList → Stmt StmtList
+[225] 展开 Stmt → IDENTIFIER:* IdStmt
+[226] 匹配 IDENTIFIER:*
+[227] 展开 IdStmt → OPERATOR:= Expr DELIMITER:;
+[228] 匹配 OPERATOR:=
+[229] 展开 Expr → Term ExprTail
+[230] 展开 Term → Factor TermTail
+[231] 展开 Factor → IDENTIFIER:* FactorRest
+[232] 匹配 IDENTIFIER:*
+[233] 展开 FactorRest → ε
+[234] 展开 TermTail → ε
+[235] 展开 ExprTail → ε
+[236] 匹配 DELIMITER:;
+[237] 展开 StmtList → ε
+[238] 匹配 DELIMITER:}
+[239] 展开 StmtList → Stmt StmtList
+[240] 展开 Stmt → IDENTIFIER:* IdStmt
+[241] 匹配 IDENTIFIER:*
+[242] 展开 IdStmt → DELIMITER:( Args DELIMITER:) TermTail ExprTail DELIMITER:;
+[243] 匹配 DELIMITER:(
+[244] 展开 Args → Expr ArgsList
+[245] 展开 Expr → Term ExprTail
+[246] 展开 Term → Factor TermTail
+[247] 展开 Factor → STRING:*
+[248] 匹配 STRING:*
+[249] 展开 TermTail → ε
+[250] 展开 ExprTail → ε
+[251] 展开 ArgsList → DELIMITER:, Expr ArgsList
+[252] 匹配 DELIMITER:,
+[253] 展开 Expr → Term ExprTail
+[254] 展开 Term → Factor TermTail
+[255] 展开 Factor → IDENTIFIER:* FactorRest
+[256] 匹配 IDENTIFIER:*
+[257] 展开 FactorRest → ε
+[258] 展开 TermTail → ε
+[259] 展开 ExprTail → ε
+[260] 展开 ArgsList → ε
+[261] 匹配 DELIMITER:)
+[262] 展开 TermTail → ε
+[263] 展开 ExprTail → ε
+[264] 匹配 DELIMITER:;
+[265] 展开 StmtList → Stmt StmtList
+[266] 展开 Stmt → ReturnStmt
+[267] 展开 ReturnStmt → KEYWORD:return ReturnTail
+[268] 匹配 KEYWORD:return
+[269] 展开 ReturnTail → Expr DELIMITER:;
+[270] 展开 Expr → Term ExprTail
+[271] 展开 Term → Factor TermTail
+[272] 展开 Factor → CONSTANT:*
+[273] 匹配 CONSTANT:*
+[274] 展开 TermTail → ε
+[275] 展开 ExprTail → ε
+[276] 匹配 DELIMITER:;
+[277] 展开 StmtList → ε
+[278] 匹配 DELIMITER:}
+[279] 输入耗尽，接受
+
+===== 分析结果 =====
+语法正确！返回结果值：0
